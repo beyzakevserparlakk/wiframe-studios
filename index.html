@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planify Wireframe Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">PLANIFY STUDIO</div>
+        <div class="top-actions">
+            <button class="btn" id="clear-canvas">Temizle</button>
+            <button class="btn btn-primary" id="export-json">Kaydet (JSON)</button>
+            <button class="btn btn-primary" id="export-png">Dışa Aktar (PNG)</button>
+        </div>
+    </header>
+
+    <main>
+        <aside class="toolbar">
+            <button class="tool-btn active" data-tool="select" title="Seçim">
+                <i data-lucide="mouse-pointer-2"></i>
+            </button>
+            <button class="tool-btn" data-tool="rect" title="Dikdörtgen">
+                <i data-lucide="square"></i>
+            </button>
+            <button class="tool-btn" data-tool="circle" title="Daire">
+                <i data-lucide="circle"></i>
+            </button>
+            <button class="tool-btn" data-tool="text" title="Metin">
+                <i data-lucide="type"></i>
+            </button>
+            <button class="tool-btn" data-tool="image" title="Görsel Ekle">
+                <i data-lucide="image"></i>
+            </button>
+        </aside>
+
+        <section class="canvas-container-wrapper">
+            <canvas id="canvas"></canvas>
+        </section>
+
+        <aside class="properties-panel" id="props-panel">
+            <div class="panel-section">
+                <h3>Nesne Özellikleri</h3>
+                <div id="no-selection" class="prop-group">
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">Düzenlemek için bir nesne seçin.</p>
+                </div>
+                
+                <div id="selection-props" class="hidden">
+                    <div class="prop-group">
+                        <label>Dolgu Rengi</label>
+                        <input type="color" id="fill-color" value="#6366f1">
+                    </div>
+                    <div class="prop-group">
+                        <label>Opaklık</label>
+                        <input type="range" id="opacity" min="0" max="1" step="0.1" value="1">
+                    </div>
+                    <div class="prop-group">
+                        <label>Kenarlık Rengi</label>
+                        <input type="color" id="stroke-color" value="#000000">
+                    </div>
+                    <div class="prop-group">
+                        <label>Kenarlık Kalınlığı</label>
+                        <input type="number" id="stroke-width" value="0" min="0">
+                    </div>
+                    <div class="prop-group" id="text-props">
+                        <label>Font Boyutu</label>
+                        <input type="number" id="font-size" value="20" min="1">
+                    </div>
+                    <button class="btn" id="delete-obj" style="margin-top: 10px; color: #ef4444; border-color: #ef4444;">Sil</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
