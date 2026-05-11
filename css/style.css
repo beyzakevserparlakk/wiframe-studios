@@ -7,6 +7,7 @@
     --text-muted: #94a3b8;
     --border: #334155;
     --sidebar-width: 72px;
+    --palette-width: 200px;
     --props-width: 280px;
 }
 
@@ -87,6 +88,7 @@ main {
 /* Tool Sidebar */
 .toolbar {
     width: var(--sidebar-width);
+    flex-shrink: 0;
     background: var(--bg-card);
     border-right: 1px solid var(--border);
     display: flex;
@@ -125,6 +127,79 @@ main {
     font-size: 1.25rem;
 }
 
+/* Components Palette */
+.components-palette {
+    width: var(--palette-width);
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.components-palette .panel-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.components-palette .panel-header h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.palette-items {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+.palette-item {
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: grab;
+    transition: all 0.2s;
+}
+
+.palette-item:hover {
+    border-color: var(--accent);
+    background: rgba(99, 102, 241, 0.05);
+    transform: translateY(-2px);
+}
+
+.palette-item:active {
+    cursor: grabbing;
+}
+
+.palette-item i {
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+.palette-item span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.palette-section-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    padding: 4px 2px 2px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+}
+
 /* Canvas Container */
 .canvas-container-wrapper {
     flex: 1;
@@ -138,14 +213,33 @@ main {
     justify-content: center;
 }
 
-#canvas-container {
+#canvas-wrapper {
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     background: white;
+}
+
+.resize-handle {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border: 3px solid white;
+    border-radius: 50%;
+    cursor: nwse-resize;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.resize-handle:hover {
+    transform: scale(1.2);
 }
 
 /* Properties Sidebar */
 .properties-panel {
     width: var(--props-width);
+    flex-shrink: 0;
     background: var(--bg-card);
     border-left: 1px solid var(--border);
     padding: 24px;

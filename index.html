@@ -39,14 +39,80 @@
             </button>
         </aside>
 
-        <section class="canvas-container-wrapper">
-            <canvas id="canvas"></canvas>
+        <aside class="components-palette">
+            <div class="panel-header">
+                <h3>Bileşenler</h3>
+            </div>
+            <div class="palette-items">
+                <div class="palette-item" draggable="true" data-type="button">
+                    <i data-lucide="square"></i>
+                    <span>Buton</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="input">
+                    <i data-lucide="text-cursor-input"></i>
+                    <span>Giriş Alanı</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="card">
+                    <i data-lucide="layout"></i>
+                    <span>Kart</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="heading">
+                    <i data-lucide="heading"></i>
+                    <span>Başlık</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="navbar">
+                    <i data-lucide="menu"></i>
+                    <span>Navbar</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="dropdown">
+                    <i data-lucide="list"></i>
+                    <span>Dropdown</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="blog-grid">
+                    <i data-lucide="grid-3x3"></i>
+                    <span>Blog Grid (1×3)</span>
+                </div>
+                <div class="palette-section-label">Grid Düzenleri</div>
+                <div class="palette-item" draggable="true" data-type="grid-2x2">
+                    <i data-lucide="layout-grid"></i>
+                    <span>2×2 Grid</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="grid-3x3">
+                    <i data-lucide="grid-3x3"></i>
+                    <span>3×3 Grid</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="grid-4x4">
+                    <i data-lucide="table-2"></i>
+                    <span>4×4 Grid</span>
+                </div>
+                <div class="palette-item" draggable="true" data-type="grid-6x6">
+                    <i data-lucide="table"></i>
+                    <span>6×6 Grid</span>
+                </div>
+            </div>
+        </aside>
+
+        <section class="canvas-container-wrapper" id="canvas-container-wrapper">
+            <div id="canvas-wrapper" style="position: relative;">
+                <canvas id="canvas"></canvas>
+                <div id="canvas-resize-handle" class="resize-handle"></div>
+            </div>
         </section>
 
         <aside class="properties-panel" id="props-panel">
             <div class="panel-section">
                 <h3>Nesne Özellikleri</h3>
                 <div id="no-selection" class="prop-group">
+                    <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 12px;">Tuval Ayarları</p>
+                    <div class="prop-group">
+                        <label>Genişlik (px)</label>
+                        <input type="number" id="canvas-width" value="1000" min="100">
+                    </div>
+                    <div class="prop-group">
+                        <label>Yükseklik (px)</label>
+                        <input type="number" id="canvas-height" value="700" min="100">
+                    </div>
+                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 16px 0;">
                     <p style="font-size: 0.875rem; color: var(--text-muted);">Düzenlemek için bir nesne seçin.</p>
                 </div>
                 
@@ -68,8 +134,21 @@
                         <input type="number" id="stroke-width" value="0" min="0">
                     </div>
                     <div class="prop-group" id="text-props">
+                        <label>Yazı Rengi</label>
+                        <input type="color" id="text-color" value="#ffffff">
+                        <label>Font Ailesi</label>
+                        <select id="font-family">
+                            <option value="Inter">Inter</option>
+                            <option value="Roboto">Roboto</option>
+                            <option value="serif">Serif</option>
+                            <option value="monospace">Monospace</option>
+                        </select>
                         <label>Font Boyutu</label>
                         <input type="number" id="font-size" value="20" min="1">
+                    </div>
+                    <div class="prop-group">
+                        <label>Köşe Yuvarlatma</label>
+                        <input type="number" id="corner-radius" value="8" min="0">
                     </div>
                     <button class="btn" id="delete-obj" style="margin-top: 10px; color: #ef4444; border-color: #ef4444;">Sil</button>
                 </div>
@@ -77,6 +156,7 @@
         </aside>
     </main>
 
+    <input type="file" id="image-upload" style="display: none;" accept="image/*">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
     <script src="js/app.js"></script>
     <script>
